@@ -40,7 +40,7 @@ serde_json = { version = "1.0", default-features = false, features = ["alloc"] }
 [features]
 default = ["std"]
 std = ["hex?/std", "serde?/std", "proptest?/std", "alloc"]
-alloc = ["hex?/alloc", "serde?/alloc", "proptest?/alloc"]
+alloc = ["hex?/alloc"]
 
 # Enables `core::error::Error` implementations always instead of conditionally through `std`.
 # Requires Rust 1.81 or newer.
@@ -48,6 +48,7 @@ core-error = []
 
 # Serde support. Use with `#[serde(with = "const_hex")]`.
 serde = ["hex?/serde", "dep:serde"]
+serde-alloc = ["serde?/alloc"]
 
 # Use `hex`'s traits instead of our own.
 # This should not be needed most of the time.
@@ -66,3 +67,4 @@ nightly = []
 
 # Internal features.
 __fuzzing = ["dep:proptest", "std"]
+__fuzzing_alloc = ["proptest?/alloc"]
